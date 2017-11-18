@@ -16,6 +16,9 @@ docker-compose stop; docker stop $(docker ps -a -q);docker rm $(docker ps -a -q)
 
 0. you need to add your host IP address to the docker-compose.yml file, to run multiple nodes
 
+eg.
+  KAFKA_ADVERTISED_HOST_NAME: 192.168.0.12
+
 1. if you change the config to clear everything down each time:
 
 docker-compose stop; docker stop $(docker ps -a -q);docker rm $(docker ps -a -q)
