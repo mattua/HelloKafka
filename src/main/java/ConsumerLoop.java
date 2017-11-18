@@ -22,10 +22,10 @@ public class ConsumerLoop implements Runnable {
         this.id = id;
         this.topics = topics;
         Properties props = new Properties();
-        props.put("bootstrap.servers", "localhost:9092");
+        props.put("bootstrap.servers", "localhost:32807");
         props.put("group.id", groupId);
         props.put("key.deserializer", StringDeserializer.class.getName());
-        props.put("value.deserializer", StringDeserializer.class.getName());
+        props.put("value.deserializer", MessagePayloadDeserializer.class.getName());
         this.consumer = new KafkaConsumer<>(props);
     }
 
@@ -58,7 +58,7 @@ public class ConsumerLoop implements Runnable {
     public static void main(String[] args) {
         int numConsumers = 3;
         String groupId = "consumer-tutorial-group";
-        List<String> topics = Arrays.asList("sihkaah");
+        List<String> topics = Arrays.asList("test");
         ExecutorService executor = Executors.newFixedThreadPool(numConsumers);
 
         final List<ConsumerLoop> consumers = new ArrayList<>();
