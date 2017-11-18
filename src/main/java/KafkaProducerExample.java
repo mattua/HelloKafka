@@ -56,7 +56,7 @@ public class KafkaProducerExample {
 
                 final ProducerRecord<Long, MessagePayload> record =
                         new ProducerRecord<>(TOPIC, index,
-                                new MessagePayload("milk","buy"));
+                                new MessagePayload("buy ","bread"));
                 RecordMetadata metadata = producer.send(record).get();
                 long elapsedTime = System.currentTimeMillis() - time;
                 System.out.printf("sent record(key=%s value=%s) " +

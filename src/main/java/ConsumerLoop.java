@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class ConsumerLoop implements Runnable {
-    private final KafkaConsumer<String, String> consumer;
+    private final KafkaConsumer<String, MessagePayload> consumer;
     private final List<String> topics;
     private final int id;
 
@@ -26,7 +26,7 @@ public class ConsumerLoop implements Runnable {
         props.put("group.id", groupId);
         props.put("key.deserializer", StringDeserializer.class.getName());
         props.put("value.deserializer", MessagePayloadDeserializer.class.getName());
-        this.consumer = new KafkaConsumer<>(props);
+        this.consumer = new KafkaConsumer<String,MessagePayload>(props);
     }
 
     @Override
@@ -35,9 +35,14 @@ public class ConsumerLoop implements Runnable {
             consumer.subscribe(topics);
 
             while (true) {
-                ConsumerRecords<String, String> records = consumer.poll(Long.MAX_VALUE);
-                for (ConsumerRecord<String, String> record : records) {
+                ConsumerRecords<String, MessagePayload> records = consumer.poll(Long.MAX_VALUE);
+                for (ConsumerRecord<String, MessagePayload> record : records) {
                     Map<String, Object> data = new HashMap<>();
+
+                    MessagePayload messagePayload = record.value();
+
+                    processMessagePayload(messagePayload);
+
                     data.put("partition", record.partition());
                     data.put("offset", record.offset());
                     data.put("value", record.value());
@@ -49,6 +54,13 @@ public class ConsumerLoop implements Runnable {
         } finally {
             consumer.close();
         }
+    }
+
+
+    private void processMessagePayload(MessagePayload messagePayload){
+
+        System.out.println("     Processing: "+ messagePayload.getVerb() + " " + messagePayload.getObject());
+
     }
 
     public void shutdown() {
