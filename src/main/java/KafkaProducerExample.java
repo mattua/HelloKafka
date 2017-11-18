@@ -1,12 +1,16 @@
 
+import kafka.utils.ZkUtils;
 import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.LongSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
+import scala.collection.JavaConversions;
+
+import java.util.List;
 import java.util.Properties;
 public class KafkaProducerExample {
-    private final static String TOPIC = "sihkaah";
+    private final static String TOPIC = "sikhavah";
     private final static String BOOTSTRAP_SERVERS =
-            "localhost:9092";
+            "localhost:32809";
     //,localhost:9093,localhost:9094";
 
     private static Producer<Long, String> createProducer() {
