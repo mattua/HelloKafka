@@ -4,7 +4,7 @@ import org.apache.kafka.common.serialization.LongSerializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import java.util.Properties;
 public class KafkaProducerExample {
-    private final static String TOPIC = "test";
+    private final static String TOPIC = "sihkaah";
     private final static String BOOTSTRAP_SERVERS =
             "localhost:9092";
     //,localhost:9093,localhost:9094";
@@ -37,7 +37,10 @@ public class KafkaProducerExample {
         final Producer<Long, String> producer = createProducer();
         long time = System.currentTimeMillis();
         try {
-            for (long index = time; index < time + sendMessageCount; index++) {
+            for (long index = time; true; index++) {
+
+                Thread.sleep(3000);
+
                 final ProducerRecord<Long, String> record =
                         new ProducerRecord<>(TOPIC, index,
                                 "Hello Mom " + index);
