@@ -13,7 +13,7 @@ import java.util.Properties;
 public class KafkaProducerExample {
     private final static String TOPIC = "test";
     private final static String BOOTSTRAP_SERVERS =
-            "localhost:32807";
+            "localhost:9092";
     //,localhost:9093,localhost:9094";
 
 

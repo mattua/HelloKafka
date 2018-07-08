@@ -1,5 +1,13 @@
 This is my project for running Kafka
 
+Current instructions are
+
+1) checkout git project
+
+
+
+
+
 ____________________________________________________
 
 DOCKER
