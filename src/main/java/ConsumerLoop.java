@@ -22,7 +22,7 @@ public class ConsumerLoop implements Runnable {
         this.id = id;
         this.topics = topics;
         Properties props = new Properties();
-        props.put("bootstrap.servers", "localhost:32807");
+        props.put("bootstrap.servers", "localhost:9092");
         props.put("group.id", groupId);
         props.put("key.deserializer", StringDeserializer.class.getName());
         props.put("value.deserializer", MessagePayloadDeserializer.class.getName());
@@ -46,7 +46,7 @@ public class ConsumerLoop implements Runnable {
                     data.put("partition", record.partition());
                     data.put("offset", record.offset());
                     data.put("value", record.value());
-                    System.out.println(this.id + ": " + data);
+                    System.out.println("Consumer "+this.id + ": " + data);
                 }
             }
         } catch (WakeupException e) {
@@ -68,9 +68,9 @@ public class ConsumerLoop implements Runnable {
     }
 
     public static void main(String[] args) {
-        int numConsumers = 3;
+        int numConsumers = 2;
         String groupId = "consumer-tutorial-group";
-        List<String> topics = Arrays.asList("test");
+        List<String> topics = Arrays.asList("my-replicated-topic");
         ExecutorService executor = Executors.newFixedThreadPool(numConsumers);
 
         final List<ConsumerLoop> consumers = new ArrayList<>();

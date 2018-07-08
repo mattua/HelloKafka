@@ -2,10 +2,26 @@ This is my project for running Kafka
 
 Current instructions are
 
-1) checkout git project
+1) checkout git project - note this now includes the kafka installation
+
+2) in the bin folder inside the projecy - run the following commands in separate windows
 
 
+bin/zookeeper-server-start.sh config/zookeeper.properties
 
+bin/kafka-server-start.sh config/server.properties &
+
+bin/kafka-server-start.sh config/server1.properties &
+
+bin/kafka-server-start.sh config/server2.properties &
+
+3) create a replicated topic
+bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 3 --partitions 3
+
+The partition is basically segragating the topic into different streams each of which are consumed independently
+
+
+2) Describe topic bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic my-replicated-topic
 
 
 ____________________________________________________

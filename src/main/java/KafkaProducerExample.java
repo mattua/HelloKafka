@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 public class KafkaProducerExample {
-    private final static String TOPIC = "test";
+    private final static String TOPIC = "my-replicated-topic";
     private final static String BOOTSTRAP_SERVERS =
             "localhost:9092";
     //,localhost:9093,localhost:9094";
@@ -56,7 +56,7 @@ public class KafkaProducerExample {
 
                 final ProducerRecord<Long, MessagePayload> record =
                         new ProducerRecord<>(TOPIC, index,
-                                new MessagePayload("buy ","bread"));
+                                new MessagePayload("buy ","bread"+System.currentTimeMillis()));
                 RecordMetadata metadata = producer.send(record).get();
                 long elapsedTime = System.currentTimeMillis() - time;
                 System.out.printf("sent record(key=%s value=%s) " +
