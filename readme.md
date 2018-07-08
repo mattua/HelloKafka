@@ -1,5 +1,8 @@
 This is my project for running Kafka
 
+This is a good tutorial on the subject
+https://sookocheff.com/post/kafka/kafka-in-a-nutshell/
+
 Current instructions are
 
 1) checkout git project - note this now includes the kafka installation
