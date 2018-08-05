@@ -7,8 +7,9 @@ Current instructions are
 
 1) checkout git project - note this now includes the kafka installation
 
-2) in the bin folder inside the projecy - run the following commands in separate windows
+2) in the folder inside the projecy - run the following commands in separate windows
 
+DO NOT RUN FROM THE BIN FOLDER DIRECTLY
 
 bin/zookeeper-server-start.sh config/zookeeper.properties
 
