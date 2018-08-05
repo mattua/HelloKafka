@@ -13,12 +13,18 @@ DO NOT RUN FROM THE BIN FOLDER DIRECTLY
 
 bin/zookeeper-server-start.sh config/zookeeper.properties
 
+IN A NEW WINDOW
+
 bin/kafka-server-start.sh config/server.properties &
+
+IN A NEW WINDOW
 
 bin/kafka-server-start.sh config/server1.properties &
 
+IN A NEW WINDOW
 bin/kafka-server-start.sh config/server2.properties &
 
+IN A NEW WINDOW
 3) create a replicated topic
 bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 3 --partitions 3
 
