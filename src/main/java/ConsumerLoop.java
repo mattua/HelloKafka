@@ -70,7 +70,7 @@ public class ConsumerLoop implements Runnable {
     public static void main(String[] args) {
         int numConsumers = 3;
         String groupId = "consumer-tutorial-group";
-        List<String> topics = Arrays.asList("sihkaah2");
+        List<String> topics = Arrays.asList("dharshini");
         ExecutorService executor = Executors.newFixedThreadPool(numConsumers);
 
         final List<ConsumerLoop> consumers = new ArrayList<>();

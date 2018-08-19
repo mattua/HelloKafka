@@ -51,6 +51,9 @@ There is an individual log folder per kafka broker, set as the log.dir in server
 /tmp/kafka-logs-1
 /tmp/kafka-logs-2
 
+-------------------5) consume messages 
+
+Run the main method in the consumerloop class making sure to set the right topic name
 
 ____________________________________________________
 
