@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 public class KafkaProducerExample {
-    private final static String TOPIC = "sihkaah2";
+    private final static String TOPIC = "dharshini";
     private final static String BOOTSTRAP_SERVERS =
             "localhost:9092";
     //,localhost:9093,localhost:9094";

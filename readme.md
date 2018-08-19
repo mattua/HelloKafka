@@ -5,11 +5,11 @@ https://sookocheff.com/post/kafka/kafka-in-a-nutshell/
 
 Current instructions are
 
-1) checkout git project - note this now includes the kafka installation
+-------------------------1) checkout git project - note this now includes the kafka installation
 
 1.5) for best results use the terminal inside the IntelliJ window
 
-2) in the folder inside the project - run the following commands in separate windows
+------------------------2) in the folder inside the project - run the following commands in separate windows
 
 DO NOT RUN FROM THE BIN FOLDER DIRECTLY
 
@@ -30,13 +30,26 @@ kafka_2.11-1.1.0/bin/kafka-server-start.sh kafka_2.11-1.1.0/config/server2.prope
 
 IN A NEW Terminal Tab in IntelliJ
 
-3) create a replicated topic in a new Tab in IntelliJ
+----------------------3) create a replicated topic in a new Tab in IntelliJ
 kafka_2.11-1.1.0/bin/kafka-topics.sh --create --topic dharshini --zookeeper localhost:2181 --replication-factor 3 --partitions 3
 
 The partition is basically segragating the topic into different streams each of which are consumed independently
 
 
-2) Describe topic kafka_2.11-1.1.0/bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic my-replicated-topic
+-------------------2) Describe topic 
+kafka_2.11-1.1.0/bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic dharshini
+
+
+-------------------3) publish to topic
+
+Run kakfaproducerexample main class making sure you change the topic name string constant
+
+------------------4) see the data being logged on disk
+
+There is an individual log folder per kafka broker, set as the log.dir in server.properties
+/tmp/kafka-logs
+/tmp/kafka-logs-1
+/tmp/kafka-logs-2
 
 
 ____________________________________________________
