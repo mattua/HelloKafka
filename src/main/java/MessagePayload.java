@@ -34,7 +34,7 @@ public  class MessagePayload {
     }
 
     public String toString(){
-        return verb + " to " + object;
+        return object + " to " + verb;
     }
 
 

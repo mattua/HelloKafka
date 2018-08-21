@@ -12,6 +12,11 @@ import java.util.Map;
 import java.util.Properties;
 public class KafkaProducerExample {
     private final static String TOPIC = "dharshini";
+
+    // NOTE: you only need to specify one bootstrap server
+    // the others will be found out automatically
+    // the benefit off adding more than one is in case
+    // one of them is down
     private final static String BOOTSTRAP_SERVERS =
             "localhost:9092";
     //,localhost:9093,localhost:9094";
@@ -56,7 +61,7 @@ public class KafkaProducerExample {
 
                 final ProducerRecord<Long, MessagePayload> record =
                         new ProducerRecord<>(TOPIC, index,
-                                new MessagePayload("buy ","bread"+System.currentTimeMillis()));
+                                new MessagePayload(("bread at time "+System.currentTimeMillis()),"buy"));
                 RecordMetadata metadata = producer.send(record).get();
                 long elapsedTime = System.currentTimeMillis() - time;
                 System.out.printf("sent record(key=%s value=%s) " +
