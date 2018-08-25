@@ -13,8 +13,10 @@ public class KafkaConsumerExample {
 
 
     public static void main(String[] args) {
-        int numConsumers = 3;
-        String groupId = "consumer-tutorial-group";
+        int numConsumers = 1;
+        String groupId = "cgroup"+System.currentTimeMillis();
+
+        groupId="cgroup1535191753571";
         List<String> topics = Arrays.asList("dharshini");
         ExecutorService executor = Executors.newFixedThreadPool(numConsumers);
 
@@ -53,7 +55,17 @@ public class KafkaConsumerExample {
             this.topics = topics;
             Properties props = new Properties();
             props.put("bootstrap.servers", "localhost:9092");
+            System.out.println(groupId);
             props.put("group.id", groupId);
+
+            // this is cool - so if you set this propery (by default it is latest)
+            // the consumption will start at the earliest possible message
+            // so a new consumer group will start from 0 in each parition and catchup
+            // after that if the consumers all go down in the group and then restart
+            // the commit offset per partition will be loaded and resumed from there
+
+            props.put("auto.offset.reset", "earliest");
+
             props.put("key.deserializer", StringDeserializer.class.getName());
             props.put("value.deserializer", MessagePayloadDeserializer.class.getName());
             this.consumer = new KafkaConsumer<String,MessagePayload>(props);
@@ -66,6 +78,9 @@ public class KafkaConsumerExample {
 
                 while (true) {
                     ConsumerRecords<String, MessagePayload> records = consumer.poll(Long.MAX_VALUE);
+
+
+
                     for (ConsumerRecord<String, MessagePayload> record : records) {
                         Map<String, Object> data = new HashMap<>();
 
