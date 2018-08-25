@@ -57,7 +57,7 @@ public class KafkaProducerExample {
         try {
             for (long index = time; true; index++) {
 
-                Thread.sleep(3000);
+                Thread.sleep(1000);
 
                 final ProducerRecord<Long, MessagePayload> record =
                         new ProducerRecord<>(TOPIC, index,

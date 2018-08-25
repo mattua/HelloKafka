@@ -18,10 +18,14 @@ DO NOT RUN FROM THE BIN FOLDER DIRECTLY
 IN A NEW Terminal Tab in IntelliJ
 kafka_2.11-1.1.0/bin/zookeeper-server-start.sh kafka_2.11-1.1.0/config/zookeeper.properties
 
+NOTE: In kafka, each node in the cluster must have its OWN LOG DIR
+
+
+
 --------START KAFKA BROKER 0----------------------------------------
 IN A NEW Terminal Tab in IntelliJ
 
-kafka_2.11-1.1.0/bin/kafka-server-start.sh kafka_2.11-1.1.0/config/server.properties
+kafka_2.11-1.1.0/bin/kafka-server-start.sh kafka_2.11-1.1.0/config/server0.properties
 
 --------START KAFKA BROKER 1----------------------------------------
 IN A NEW Terminal Tab in IntelliJ
