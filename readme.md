@@ -13,24 +13,28 @@ Current instructions are
 
 DO NOT RUN FROM THE BIN FOLDER DIRECTLY
 
+
+--------START ZOOKEEPER----------------------------------------
+IN A NEW Terminal Tab in IntelliJ
 kafka_2.11-1.1.0/bin/zookeeper-server-start.sh kafka_2.11-1.1.0/config/zookeeper.properties
 
-
-
+--------START KAFKA BROKER 0----------------------------------------
 IN A NEW Terminal Tab in IntelliJ
 
 kafka_2.11-1.1.0/bin/kafka-server-start.sh kafka_2.11-1.1.0/config/server.properties
 
+--------START KAFKA BROKER 1----------------------------------------
 IN A NEW Terminal Tab in IntelliJ
 
 kafka_2.11-1.1.0/bin/kafka-server-start.sh kafka_2.11-1.1.0/config/server1.properties
 
+--------START KAFKA BROKER 2----------------------------------------
 IN A NEW Terminal Tab in IntelliJ
 kafka_2.11-1.1.0/bin/kafka-server-start.sh kafka_2.11-1.1.0/config/server2.properties
 
-IN A NEW Terminal Tab in IntelliJ
 
 ----------------------3) create a replicated topic in a new Tab in IntelliJ
+IN A NEW Terminal Tab in IntelliJ
 kafka_2.11-1.1.0/bin/kafka-topics.sh --create --topic dharshini --zookeeper localhost:2181 --replication-factor 3 --partitions 3
 
 The partition is basically segragating the topic into different streams each of which are consumed independently
